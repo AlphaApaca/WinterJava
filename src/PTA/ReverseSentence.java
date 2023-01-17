@@ -2,7 +2,7 @@ package PTA;
 
 import java.util.Scanner;
 
-public class WordLength {
+public class ReverseSentence {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         String pretreatment = scanner.nextLine();
@@ -12,7 +12,7 @@ public class WordLength {
         boolean judged = false;
         intialize(ary);
         for(int i = 0; i < pretreatment.length(); i++){
-            if(pretreatment.charAt(i)=='.'){
+            if((i == pretreatment.length()-1)&&(pretreatment.charAt(i)==' ')){
                 if(!judged){
                     j = j - 1;
                 }
@@ -27,20 +27,20 @@ public class WordLength {
             }
         }
         if(pretreatment.length() == 0){
-            System.out.println("0");
+            System.out.println();
         }else {
-            for(int i = 0; i <= j; i++){
-                if(i != 0){
+            for(int i = j; i >= 0; i--){
+                if(i != j){
                     System.out.print(" ");
                 }
-                System.out.print(ary[i].length());
+                System.out.print(ary[i]);
             }
         }
-
     }
     public static void intialize(String[] ary){
         for (int i = 0; i < ary.length; i++){
             ary[i] = "";
         }
     }
+    //去你妈的pta超时，傻逼pta题目作者就应该被超时
 }
