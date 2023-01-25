@@ -1,8 +1,8 @@
 package Task2_Bike;
 
-public class SharedBike extends Bike{
+public class SharedBike extends Bike implements Bell{
     private boolean borrowed;
-    private long id;
+    final long id;
     private int gas;
 
     final int QUANTITY = 50;
@@ -36,6 +36,8 @@ public class SharedBike extends Bike{
     public void borrowBike(){
         if(!this.borrowed){
             if(gas!=0){
+                System.out.println("Welcome to use");
+                belling();
                 this.borrowed = true;
                 this.gas--;
             }else {
@@ -49,6 +51,9 @@ public class SharedBike extends Bike{
     public void returnBike(){
         if(this.borrowed){
             this.borrowed = false;
+            belling();
+            System.out.println("The ride has been completed" + "\n"
+            + "Looking forward to your next use");
         }else {
             System.out.println("This bike has been returned");
         }
@@ -57,15 +62,7 @@ public class SharedBike extends Bike{
         this.gas = QUANTITY;
     }
 
-    public static void printInfo(SharedBike sharedBike){
-        System.out.println("The id of this bike: "+ sharedBike.getId() + "\n"
-        + "The rest of gas: " + sharedBike.getGas());
-        if(sharedBike.isBorrowed()){
-            System.out.println("This bike is being borrowed");
-        }else {
-            System.out.println("This bike is available");
-        }
-    }
+
     @Override
     public String toString() {
         return "SharedBike{" +
@@ -76,5 +73,9 @@ public class SharedBike extends Bike{
                 ", id=" + id +
                 ", gas=" + gas +
                 '}';
+    }
+    @Override
+    public void belling() {
+        System.out.println("Belling: \"So, Nvidia, f**k u(英伟达我爱你)\"");
     }
 }
